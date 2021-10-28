@@ -29,6 +29,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "report.h"
 #include "debug.h"
 #include "ps2.h"
+#include "action_layer.h"
 
 /* ============================= MACROS ============================ */
 
@@ -234,7 +235,7 @@ static inline void ps2_mouse_scroll_button_task(report_mouse_t *mouse_report) {
     } scroll_state                     = SCROLL_NONE;
     static uint16_t scroll_button_time = 0;
 
-    if (PS2_MOUSE_SCROLL_BTN_MASK == (mouse_report->buttons & (PS2_MOUSE_SCROLL_BTN_MASK))) {
+    if (layer_state_is(1)) {
         // All scroll buttons are pressed
 
         if (scroll_state == SCROLL_NONE) {

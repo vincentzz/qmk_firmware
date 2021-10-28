@@ -16,6 +16,9 @@ COMMAND_ENABLE = no         # Commands for debug and configuration
 SLEEP_LED_ENABLE = no       # Breathing sleep LED during USB suspend
 # if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
 NKRO_ENABLE = no            # USB Nkey Rollover
-BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
+BACKLIGHT_ENABLE = yes      # Enable keyboard backlight functionality
 RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
 AUDIO_ENABLE = no           # Audio output 
+
+PS2_MOUSE_ENABLE = yes      # enable PS2 mouse
+PS2_USE_USART = yes         # enable USART for PS2 mouse
