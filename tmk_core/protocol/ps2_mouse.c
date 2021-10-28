@@ -233,13 +233,11 @@ static inline void ps2_mouse_scroll_button_task(report_mouse_t *mouse_report) {
         SCROLL_BTN,
         SCROLL_SENT,
     } scroll_state                     = SCROLL_NONE;
-    static uint16_t scroll_button_time = 0;
 
-    if (layer_state_is(1)) {
+    if (!layer_state_is(0)) {
         // All scroll buttons are pressed
 
         if (scroll_state == SCROLL_NONE) {
-            scroll_button_time = timer_read();
             scroll_state       = SCROLL_BTN;
         }
 
@@ -257,19 +255,8 @@ static inline void ps2_mouse_scroll_button_task(report_mouse_t *mouse_report) {
             mouse_report->v = -mouse_report->v;
 #endif
         }
-    } else if (0 == (PS2_MOUSE_SCROLL_BTN_MASK & mouse_report->buttons)) {
+    } else {
         // None of the scroll buttons are pressed
-
-#if PS2_MOUSE_SCROLL_BTN_SEND
-        if (scroll_state == SCROLL_BTN && timer_elapsed(scroll_button_time) < PS2_MOUSE_SCROLL_BTN_SEND) {
-            PRESS_SCROLL_BUTTONS;
-            host_mouse_send(mouse_report);
-            wait_ms(100);
-            RELEASE_SCROLL_BUTTONS;
-        }
-#endif
         scroll_state = SCROLL_NONE;
     }
-
-    RELEASE_SCROLL_BUTTONS;
 }

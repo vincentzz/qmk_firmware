@@ -212,7 +212,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PS2_MOUSE_BTN_LEFT      0
 #define PS2_MOUSE_BTN_RIGHT     1
 #define PS2_MOUSE_BTN_MIDDLE    2
-#define PS2_MOUSE_SCROLL_BTN_MASK (1<<PS2_MOUSE_BTN_MIDDLE)
-#define PS2_MOUSE_SCROLL_BTN_SEND 300 /* Default */
 #define PS2_MOUSE_INVERT_X
 #define PS2_MOUSE_INVERT_Y
