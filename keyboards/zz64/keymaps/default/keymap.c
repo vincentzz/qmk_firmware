@@ -16,19 +16,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_ESC, KC_F2, KC_F4, KC_F5, KC_F7, KC_F9, KC_F10, KC_F12, 
 		KC_F1, KC_F3, KC_UP, KC_F6, KC_F8, KC_HOME, KC_F11, KC_TRNS, 
 		KC_TRNS, KC_WBAK, KC_WFWD, KC_TRNS, KC_INS, KC_PGUP, KC_PSCR, KC_PAUS, 
-		KC_TRNS, KC_TRNS, KC_DOWN, KC_TRNS, KC_TRNS, KC_END, KC_SLCK, KC_TRNS, 
-		KC_TRNS, KC_LEFT, KC_RGHT, KC_TRNS, KC_DEL, KC_PGDN, KC_TRNS, KC_TRNS, 
-		KC_TRNS, KC_MPRV, KC_MNXT, KC_MUTE, KC_VOLU, BL_DEC, KC_TRNS, KC_TRNS, 
-		KC_TRNS, KC_MPLY, KC_VOLD, KC_TRNS, KC_TRNS, BL_TOGG, BL_INC, KC_TRNS, 
+		KC_TRNS, KC_TRNS, KC_DOWN, KC_TRNS, KC_MYCM, KC_END, KC_SLCK, KC_TRNS, 
+		KC_TRNS, KC_LEFT, KC_RGHT, KC_CALC, KC_DEL, KC_PGDN, KC_TRNS, KC_TRNS, 
+		KC_TRNS, KC_MPRV, KC_MNXT, KC_MUTE, KC_VOLU, KC_TRNS, KC_TRNS, KC_TRNS, 
+		KC_TRNS, KC_MPLY, KC_VOLD, KC_TRNS, KC_TRNS, BL_DEC, BL_INC, KC_TRNS, 
 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS) 
 };
 
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
-	/*keyevent_t event = record->event;
-
-	switch (id) {
-
-	}*/
 	return MACRO_NONE;
 }
 
@@ -74,4 +69,12 @@ void led_set_user(uint8_t usb_led) {
 		
 	}
 
+}
+
+void keyboard_post_init_user(void) {
+  // Customise these values to desired behaviour
+  //debug_enable=true;
+  //debug_matrix=true;
+  //debug_keyboard=true;
+  //debug_mouse=true;
 }

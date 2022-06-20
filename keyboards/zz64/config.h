@@ -59,7 +59,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define LED_KANA_PIN B4
 
 #define BACKLIGHT_PIN B7
-#define BACKLIGHT_LEVELS 3
+#define BACKLIGHT_LEVELS 10
 #define BACKLIGHT_BREATHING
 
 //#define RGB_DI_PIN E2
@@ -152,6 +152,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define BOOTMAGIC_LITE_ROW 0
 //#define BOOTMAGIC_LITE_COLUMN 0
 
+#define USB_POLLING_INTERVAL_MS 10
 
 #ifdef PS2_USE_USART
 #define PS2_CLOCK_PORT  PORTD
@@ -194,23 +195,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PS2_USART_RX_VECT       USART1_RX_vect
 #endif
 
-/* Use remote mode instead of the default stream mode (see link) */
-#define PS2_MOUSE_USE_REMOTE_MODE
-/* Enable the scrollwheel or scroll gesture on your mouse or touchpad */
-#define PS2_MOUSE_ENABLE_SCROLLING
-/* Some mice will need a scroll mask to be configured. The default is 0xFF. */
-#define PS2_MOUSE_SCROLL_MASK 0x0F
-/* Applies a transformation to the movement before sending to the host (see link) */
-#define PS2_MOUSE_USE_2_1_SCALING
-/* The time to wait after initializing the ps2 host */
-#define PS2_MOUSE_INIT_DELAY 1000 /* Default */
-
-#define PS2_MOUSE_X_MULTIPLIER 3
-#define PS2_MOUSE_Y_MULTIPLIER 3
-#define PS2_MOUSE_V_MULTIPLIER 1
-
-#define PS2_MOUSE_BTN_LEFT      0
-#define PS2_MOUSE_BTN_RIGHT     1
-#define PS2_MOUSE_BTN_MIDDLE    2
-#define PS2_MOUSE_INVERT_X
-#define PS2_MOUSE_INVERT_Y
+#define PS2_MOUSE_X_MULTIPLIER 2
+#define PS2_MOUSE_Y_MULTIPLIER 2
+#define PS2_MOUSE_SCROLL_DIVISOR_V 4
+#define PS2_MOUSE_SCROLL_DIVISOR_H 4

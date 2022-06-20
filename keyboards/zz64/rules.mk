@@ -19,6 +19,5 @@ NKRO_ENABLE = no            # USB Nkey Rollover
 BACKLIGHT_ENABLE = yes      # Enable keyboard backlight functionality
 RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
 AUDIO_ENABLE = no           # Audio output 
-
 PS2_MOUSE_ENABLE = yes      # enable PS2 mouse
 PS2_USE_USART = yes         # enable USART for PS2 mouse
