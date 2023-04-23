@@ -1,7 +1,6 @@
 #include "zz64.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-
 	KEYMAP(
 		KC_GRV, KC_2, KC_4, KC_5, KC_7, KC_9, KC_0, KC_EQL, 
 		KC_1, KC_3, KC_E, KC_6, KC_8, KC_I, KC_MINS, KC_BSPC, 
@@ -68,13 +67,53 @@ void led_set_user(uint8_t usb_led) {
 	} else {
 		
 	}
-
 }
 
+/*
 void keyboard_post_init_user(void) {
   // Customise these values to desired behaviour
-  //debug_enable=true;
-  //debug_matrix=true;
-  //debug_keyboard=true;
-  //debug_mouse=true;
+  debug_enable=true;
+  debug_matrix=true;
+  debug_keyboard=true;
+  debug_mouse=true;
+}
+*/
+
+
+//filtering out vibartion for trackpoint minor movement.
+#define bufferSize 5
+
+static int8_t i = 0;
+static int8_t xs[bufferSize] = {0,0,0,0,0};
+static int8_t ys[bufferSize] = {0,0,0,0,0};
+static int8_t vs[bufferSize] = {0,0,0,0,0};
+static int8_t hs[bufferSize] = {0,0,0,0,0};
+
+static int16_t sumX = 0;
+static int16_t sumY = 0;
+static int16_t sumV = 0;
+static int16_t sumH = 0;
+
+
+void ps2_mouse_moved_user(report_mouse_t *mouse_report) {
+    i = (i + 1)  % bufferSize;
+    sumX = sumX - (int16_t)xs[i];
+    sumY = sumY - (int16_t)ys[i];
+    sumV = sumV - (int16_t)vs[i];
+    sumH = sumH - (int16_t)hs[i];
+    
+    xs[i] = (*mouse_report).x;
+    ys[i] = (*mouse_report).y;
+    vs[i] = (*mouse_report).v;
+    hs[i] = (*mouse_report).h;
+    
+    sumX = sumX + (int16_t)xs[i];
+    sumY = sumY + (int16_t)ys[i];
+    sumV = sumV + (int16_t)vs[i];
+    sumH = sumH + (int16_t)hs[i];
+    
+    (*mouse_report).x = (int8_t)(sumX / bufferSize);
+    (*mouse_report).y = (int8_t)(sumY / bufferSize);
+    (*mouse_report).v = (int8_t)(sumV / bufferSize);
+    (*mouse_report).h = (int8_t)(sumH / bufferSize);
 }

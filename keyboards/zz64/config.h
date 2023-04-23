@@ -45,7 +45,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define UNUSED_PINS
 
 /* COL2ROW, ROW2COL */
-#define DIODE_DIRECTION COL2ROW
+#define DIODE_DIRECTION ROW2COL
 
 /*
  * Split Keyboard specific options, make sure you have 'SPLIT_KEYBOARD = yes' in your rules.mk, and define SOFT_SERIAL_PIN.
@@ -152,7 +152,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define BOOTMAGIC_LITE_ROW 0
 //#define BOOTMAGIC_LITE_COLUMN 0
 
-#define USB_POLLING_INTERVAL_MS 10
+#define USB_POLLING_INTERVAL_MS 1
 
 #ifdef PS2_USE_USART
 #define PS2_CLOCK_PORT  PORTD
@@ -195,7 +195,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PS2_USART_RX_VECT       USART1_RX_vect
 #endif
 
-#define PS2_MOUSE_X_MULTIPLIER 2
-#define PS2_MOUSE_Y_MULTIPLIER 2
-#define PS2_MOUSE_SCROLL_DIVISOR_V 4
-#define PS2_MOUSE_SCROLL_DIVISOR_H 4
+#define PS2_MOUSE_X_MULTIPLIER 4
+#define PS2_MOUSE_Y_MULTIPLIER 4
+#define PS2_MOUSE_SCROLL_DIVISOR_V 8
+#define PS2_MOUSE_SCROLL_DIVISOR_H 8
