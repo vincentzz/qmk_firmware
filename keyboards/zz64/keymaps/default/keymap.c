@@ -37,35 +37,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 void led_set_user(uint8_t usb_led) {
-
-	if (usb_led & (1 << USB_LED_NUM_LOCK)) {
-		
-	} else {
-		
-	}
-
 	if (usb_led & (1 << USB_LED_CAPS_LOCK)) {
 		DDRD |= (1 << 6); PORTD &= ~(1 << 6);
 	} else {
 		DDRD &= ~(1 << 6); PORTD &= ~(1 << 6);
-	}
-
-	if (usb_led & (1 << USB_LED_SCROLL_LOCK)) {
-		
-	} else {
-		
-	}
-
-	if (usb_led & (1 << USB_LED_COMPOSE)) {
-		
-	} else {
-		
-	}
-
-	if (usb_led & (1 << USB_LED_KANA)) {
-		
-	} else {
-		
 	}
 }
 
@@ -86,34 +61,26 @@ void keyboard_post_init_user(void) {
 static int8_t i = 0;
 static int8_t xs[bufferSize] = {0,0,0,0,0};
 static int8_t ys[bufferSize] = {0,0,0,0,0};
-static int8_t vs[bufferSize] = {0,0,0,0,0};
-static int8_t hs[bufferSize] = {0,0,0,0,0};
 
 static int16_t sumX = 0;
 static int16_t sumY = 0;
-static int16_t sumV = 0;
-static int16_t sumH = 0;
 
 
 void ps2_mouse_moved_user(report_mouse_t *mouse_report) {
     i = (i + 1)  % bufferSize;
     sumX = sumX - (int16_t)xs[i];
     sumY = sumY - (int16_t)ys[i];
-    sumV = sumV - (int16_t)vs[i];
-    sumH = sumH - (int16_t)hs[i];
+   
     
     xs[i] = (*mouse_report).x;
     ys[i] = (*mouse_report).y;
-    vs[i] = (*mouse_report).v;
-    hs[i] = (*mouse_report).h;
+   
     
     sumX = sumX + (int16_t)xs[i];
     sumY = sumY + (int16_t)ys[i];
-    sumV = sumV + (int16_t)vs[i];
-    sumH = sumH + (int16_t)hs[i];
+   
     
     (*mouse_report).x = (int8_t)(sumX / bufferSize);
     (*mouse_report).y = (int8_t)(sumY / bufferSize);
-    (*mouse_report).v = (int8_t)(sumV / bufferSize);
-    (*mouse_report).h = (int8_t)(sumH / bufferSize);
+   
 }

@@ -195,7 +195,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PS2_USART_RX_VECT       USART1_RX_vect
 #endif
 
-#define PS2_MOUSE_X_MULTIPLIER 4
-#define PS2_MOUSE_Y_MULTIPLIER 4
-#define PS2_MOUSE_SCROLL_DIVISOR_V 8
-#define PS2_MOUSE_SCROLL_DIVISOR_H 8
+#define PS2_MOUSE_X_MULTIPLIER 6
+#define PS2_MOUSE_Y_MULTIPLIER 6
+#define PS2_MOUSE_SCROLL_DIVISOR_V 12
+#define PS2_MOUSE_SCROLL_DIVISOR_H 12
